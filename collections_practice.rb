@@ -30,9 +30,19 @@ def count_elements(array)
   end
 end
 
-def merge_data(h1, h2)
-  h1.merge(h2)
-  #need to convert the name of the hash into a key value pair in the hash, then save to an array
+def merge_data(keys, values)
+  container = []
+  keys.each do |person_name|
+    name = person_name[:first_name]
+    values.each do |person_data|
+      if person_data[name]
+        merged_person = person_data[name]
+        merged_person[:first_name] = name
+        container << merged_person
+      end
+    end
+  end
+  container
 end
 
 def find_cool
